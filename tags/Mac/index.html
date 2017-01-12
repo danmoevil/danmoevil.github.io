@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://damowei.com">
-  <title>Damowei の Blog</title>
+  <title>Tag: Mac | Damowei の Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="就职于一家小公司，从事Java后台开发，在此记录一下自己的足迹">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Damowei の Blog">
-<meta property="og:url" content="http://damowei.com/index.html">
+<meta property="og:url" content="http://damowei.com/tags/Mac/index.html">
 <meta property="og:site_name" content="Damowei の Blog">
 <meta property="og:description" content="就职于一家小公司，从事Java后台开发，在此记录一下自己的足迹">
 <meta name="twitter:card" content="summary">
@@ -136,82 +136,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Mac编译OpenJDK-7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/01/12/Mac编译OpenJDK-7/" class="archive-article-date">
+  	<time datetime="2017-01-12T02:57:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-12</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/12/Mac编译OpenJDK-7/">Mac编译OpenJDK 7</a>
+      <a class="archive-article-title" href="/2017/01/12/Mac编译OpenJDK-7/">Mac编译OpenJDK 7</a>
     </h1>
   
 
-        
-        <a href="/2017/01/12/Mac编译OpenJDK-7/" class="archive-article-date">
-  	<time datetime="2017-01-12T02:57:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>转载自<a href="http://www.txazo.com/jvm/openjdk-compile.html，根据自己的经历稍加修改" target="_blank" rel="external">http://www.txazo.com/jvm/openjdk-compile.html，根据自己的经历稍加修改</a></p>
-<h2 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h2><ul>
-<li>Mac OS X 10.12.2</li>
-<li>JDK 1.6.0</li>
-<li>Xcode 8.2.1</li>
-<li>XQuartz 2.7.9</li>
-<li>CUPS 2.2.1</li>
-<li>GNU Make 3.81</li>
-<li>Ant 1.9.8</li>
-</ul>
-<h2 id="下载OpenJDK源码"><a href="#下载OpenJDK源码" class="headerlink" title="下载OpenJDK源码"></a>下载OpenJDK源码</h2><ul>
-<li>源码下载方式一:</li>
-</ul>
-<p>使用<code>Mercurial</code>获取OpenJDK的源码，这种方式比较慢，很有可能中断，做好翻墙的准备</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hg clone http://hg.openjdk.java.net/jdk7u/jdk7u</div><div class="line">cd jdk7u</div><div class="line">bash ./get_source.sh</div></pre></td></tr></table></figure>
-<p>注：在用这个版本的源码编译时出现比较奇怪的问题，所以可以尝试采用方式二；</p>
-<ul>
-<li>源码下载方式二:</li>
-</ul>
-<p>官网下载: <a href="https://jdk7.java.net/source.html" target="_blank" rel="external">https://jdk7.java.net/source.html</a> ，然后解压缩。</p>
-<h2 id="安装JDK1-6"><a href="#安装JDK1-6" class="headerlink" title="安装JDK1.6"></a>安装JDK1.6</h2><p>Mac版的<code>jdk 1.6</code>下载地址: <a href="https://support.apple.com/kb/DL1572" target="_blank" rel="external">https://support.apple.com/kb/DL1572</a> 。</p>
-<h2 id="安装Xcode"><a href="#安装Xcode" class="headerlink" title="安装Xcode"></a>安装Xcode</h2><p>安装<code>Xcode</code>，直接通过App Store安装。</p>
-<p>安装<code>Command Line Tools</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcode-select --install</div></pre></td></tr></table></figure>
-<p>创建<code>LLVM</code>的软链接:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo ln -s /usr/bin/llvm-gcc /Applications/Xcode.app/Contents/Developer/usr/bin/llvm-gcc</div><div class="line">sudo ln -s /usr/bin/llvm-g++ /Applications/Xcode.app/Contents/Developer/usr/bin/llvm-g++</div></pre></td></tr></table></figure>
-<h2 id="安装XQuartz"><a href="#安装XQuartz" class="headerlink" title="安装XQuartz"></a>安装XQuartz</h2><p>下载<code>XQuartz</code>并安装，安装完成后，执行下面的命令:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp -R /usr/X11/include/X11 /usr/local/include/X11</div><div class="line">sudo ln -s /usr/X11/include/freetype2/freetype/ /usr/X11/include/freetype</div></pre></td></tr></table></figure>
-<h2 id="安装CUPS"><a href="#安装CUPS" class="headerlink" title="安装CUPS"></a>安装CUPS</h2><p>下载并安装<code>CUPS</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">wget https://github.com/apple/cups/releases/download/release-2.1.4/cups-2.1.4-source.tar.gz</div><div class="line">tar -zxvf cups-2.1.4-source.tar.gz</div><div class="line">cd cups-2.1.4-source</div><div class="line">./configure --prefix=/usr/local/cups</div><div class="line">make</div><div class="line">sudo make install</div></pre></td></tr></table></figure>
-<p><strong>注</strong>：在OS X 10.11 及之后版本 System Integrity Protection会阻止root权限修改系统文件,解决办法看<a href="http://stackoverflow.com/questions/32590053/copying-file-under-root-got-failed-in-os-x-el-capitan-10-11" target="_blank" rel="external"><strong>这里</strong></a></p>
-<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>设置编译的环境变量:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">export LANG=C</div><div class="line">export ALT_BOOTDIR=`/usr/libexec/java_home -v 1.6.0`</div><div class="line">export ALT_CUPS_HEADERS_PATH=&quot;/usr/local/cups/include&quot;</div><div class="line">export ALLOW_DOWNLOADS=true</div><div class="line">export USE_PRECOMPILED_HEADER=true</div><div class="line">export SKIP_DEBUG_BUILD=true</div><div class="line">export SKIP_FASTDEBUG_BUILD=false</div><div class="line">export DEBUG_NAME=debug</div><div class="line">unset CLASSPATH</div><div class="line">unset JAVA_HOME</div></pre></td></tr></table></figure>
-<h2 id="编译检查"><a href="#编译检查" class="headerlink" title="编译检查"></a>编译检查</h2><p>运行下面的命令进行编译检查:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo make sanity</div></pre></td></tr></table></figure>
-<p>若编译检查通过，输出如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Sanity check passed.</div></pre></td></tr></table></figure>
-<h2 id="开始编译"><a href="#开始编译" class="headerlink" title="开始编译"></a>开始编译</h2><p>运行下面的命令开始编译:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo make CC=clang COMPILER_WARNINGS_FATAL=false LFLAGS=&apos;-Xlinker -lstdc++&apos; USE_CLANG=true LANG=C LP64=1 ARCH_DATA_MODEL=64 HOTSPOT_BUILD_JOBS=8 ALT_BOOTDIR=/Library/Java/Home _JAVA_OPTIONS=-Dfile.encoding=ASCII fastdebug_build</div></pre></td></tr></table></figure>
-<h2 id="编译问题解决"><a href="#编译问题解决" class="headerlink" title="编译问题解决"></a>编译问题解决</h2><p>期间出现十几次报错，详细解决办法看<a href="http://www.voidcn.com/blog/j754379117/article/p-6347581.html" target="_blank" rel="external"><strong>这里</strong></a></p>
-<h2 id="编译完成"><a href="#编译完成" class="headerlink" title="编译完成"></a>编译完成</h2><p>编译成功后，输出如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;Finished making images @ Wed Jan  4 17:55:59 CST 2017 ...</div><div class="line">########################################################################</div><div class="line">##### Leaving jdk for target(s) sanity all  images                 #####</div><div class="line">########################################################################</div><div class="line">##### Build time 00:07:28 jdk for target(s) sanity all  images     #####</div><div class="line">########################################################################</div><div class="line"></div><div class="line">#-- Build times ----------</div><div class="line">Target fastdebug_build</div><div class="line">Start 2017-01-04 17:47:58</div><div class="line">End   2017-01-04 17:55:59</div><div class="line">00:00:13 corba</div><div class="line">00:00:09 hotspot</div><div class="line">00:00:03 jaxp</div><div class="line">00:00:04 jaxws</div><div class="line">00:07:28 jdk</div><div class="line">00:00:03 langtools</div><div class="line">00:08:01 TOTAL</div><div class="line">-------------------------</div></pre></td></tr></table></figure>
-<p>编译结果:</p>
-<ul>
-<li><strong>build/macosx-x86_64</strong></li>
-<li><strong>build/macosx-x86_64-fastdebug</strong></li>
-</ul>
-<p>运行编译好的jdk:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ cd build/macosx-x86_64-fastdebug</div><div class="line">$ bin/java -version</div><div class="line">openjdk version &quot;1.7.0-internal-fastdebug&quot;</div><div class="line">OpenJDK Runtime Environment (build 1.7.0-internal-fastdebug-root_2016_08_03_21_45-b00)</div><div class="line">OpenJDK 64-Bit Server VM (build 24.95-b01-fastdebug, mixed mode)</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -231,29 +183,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/12/Mac编译OpenJDK-7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-
-
-
-
-
-
-
   
   
+    </div></section>
+  
+
+    
 
 
           </div>
@@ -275,10 +217,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: true,
 		root: "/",
